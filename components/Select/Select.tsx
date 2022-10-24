@@ -1,7 +1,5 @@
-import { Select as AntdSelect, SelectProps } from "antd";
-import { FC } from "react";
+import { Select as AntdSelect } from "antd";
 import styled from "styled-components";
-import { ArrowDown } from "svg/arrow-down";
 
 export const Select = styled(AntdSelect)`
   height: 44px;
