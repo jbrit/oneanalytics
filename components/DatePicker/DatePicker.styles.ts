@@ -7,10 +7,12 @@ export const DatePicker = styled(AntdDatePicker)`
   border: 2px solid #343942;
   border-radius: 10px;
   color: #707276;
-  font-size: 1.8rem;
-  line-height: 1.5rem !important;
-  .ant-picker-input > input {
-    font-size: 1.5rem;
+  .ant-picker-input > input,
+  .ant-picker-input > input::placeholder {
+    font-size: 1.6rem;
+    line-height: 1.5rem;
+    font-weight: 400;
+    color: #707276;
   }
   &:hover,
   &:focus {
