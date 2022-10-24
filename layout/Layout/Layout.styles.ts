@@ -13,6 +13,10 @@ export const Layout = styled(AntdLayout)`
 export const Content = styled(AntdLayout.Content)`
   background: transparent;
   padding: 20px 20px 80px 20px;
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+  flex-direction: column;
   @media screen and (${BREAKPOINTS.md}) {
     padding: 60px 60px 100px 60px;
   }
