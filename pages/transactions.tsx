@@ -8,7 +8,7 @@ import {
   TypographyTwo,
 } from "$components/Typography/Typography.styles";
 import Layout from "layout/Layout/Layout";
-import type { NextPage } from "next";
+import type { GetServerSideProps, NextPage } from "next";
 import Head from "next/head";
 import Image from "next/image";
 import { ArrowDown } from "svg/arrow-down";
@@ -25,8 +25,16 @@ import Link from "next/link";
 import MultiSearch from "$components/MultiSearch/MultiSearch";
 import { useState } from "react";
 
-const Transactions: NextPage = () => {
-  const [inputs, setInputs] = useState<string[]>([]);
+interface TransactionsProps {
+  query: {
+    search?: string;
+  };
+}
+
+const Transactions: NextPage<TransactionsProps> = ({
+  query: { search = "" },
+}) => {
+  const [inputs, setInputs] = useState<string[]>(search.split(","));
   return (
     <Layout
       headerChildren={
@@ -192,3 +200,11 @@ const Transactions: NextPage = () => {
 };
 
 export default Transactions;
+
+export const getServerSideProps: GetServerSideProps = async ({ query }) => {
+  return Promise.resolve({
+    props: {
+      query,
+    },
+  });
+};
