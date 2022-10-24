@@ -8,7 +8,6 @@ export const TypographyOne = styled.p<ITypographyProps>`
   line-height: 2rem;
   color: ${({ color }) => color ?? "rgba(255, 255, 255, 0.6)"};
   margin-bottom: ${({ mb }) => mb};
-  word-break: break-all;
   text-align: ${({ textAlign }) => textAlign};
   @media screen and (${BREAKPOINTS.md}) {
     font-size: 1.4rem;
@@ -44,7 +43,6 @@ export const TypographyThree = styled.p<ITypographyProps>`
   line-height: 2.6rem;
   color: ${({ color }) => color ?? "rgba(255, 255, 255, 0.67)"};
   margin-bottom: ${({ mb }) => mb};
-  word-break: break-all;
   text-align: ${({ textAlign }) => textAlign};
   @media screen and (${BREAKPOINTS.md}) {
     font-size: 1.8rem;
