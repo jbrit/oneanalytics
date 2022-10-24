@@ -11,10 +11,11 @@ export const StyledFooter = styled(AntdLayout.Footer)`
   justify-content: space-between;
   align-items: center;
   padding: 20px;
+  border-top: 2px solid rgba(52, 57, 66, 0.67);
   @media screen and (${BREAKPOINTS.md}) {
-    padding: 30px 60px;
+    padding: 20px 60px;
   }
   @media screen and (${BREAKPOINTS.lg}) {
-    padding: 40px 86px;
+    padding: 30px 86px;
   }
 `;
