@@ -45,7 +45,15 @@ const Transactions: NextPage<TransactionsProps> = ({
   );
 
   const mappedData = data?.items.map(({ log_events }) =>
-    log_events.filter(({ decoded }) => TRANSACTION_TYPE.includes(decoded?.name))
+    log_events.filter(({ decoded }) => {
+      if (!decoded) return false;
+      return (
+        TRANSACTION_TYPE.includes(decoded?.name) &&
+        decoded.params
+          .map(({ value }) => value)
+          .includes("0xcD4bde67fe7C6Eb601d03a35Ea8a55eB2b136965".toLowerCase())
+      );
+    })
   );
 
   console.log(mappedData);

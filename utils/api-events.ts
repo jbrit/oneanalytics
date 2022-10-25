@@ -199,10 +199,12 @@ interface HRC20Approval {
 interface UnknownEvent {
   name: string;
   signature: string;
-  params: unknown[];
+  //   we won't need this, this type is a hack
+  params: { value: string }[];
 }
 
 export type HarmonyEvent =
+  | null
   | TransferSingle
   | TransferBatch
   | HRC721Transfer
