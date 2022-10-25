@@ -48,12 +48,12 @@ export interface Transaction {
 const covalentKey = "ckey_1d37f91734d44443acdbb6a30bf";
 
 export const covalentApiInstance = axios.create({
-  baseURL: `https://api.covalenthq.com/v1/1666600000/`,
+  baseURL: `https://api.covalenthq.com/v1/1/`,
 });
 
-export const getTransactions = async (address: string, token_id: string) =>
+export const getTransactions = async (address: string) =>
   await (
     await covalentApiInstance.get<BaseResponse<Transaction[]>>(
-      `tokens/${address}/nft_transactions/${token_id}/?quote-currency=USD&format=JSON&key=${covalentKey}`
+      `/address/${address}/transactions_v2/?quote-currency=USD&format=JSON&block-signed-at-asc=false&no-logs=false&key=${covalentKey}`
     )
   ).data.data;
