@@ -24,6 +24,9 @@ import { Save } from "svg/save";
 import Link from "next/link";
 import MultiSearch from "$components/MultiSearch/MultiSearch";
 import { useState } from "react";
+import { getTransactions } from "$utils/api";
+import { useQuery } from "react-query";
+import { TRANSACTION_TYPE } from "$utils/constant";
 
 interface TransactionsProps {
   query: {
@@ -35,6 +38,18 @@ const Transactions: NextPage<TransactionsProps> = ({
   query: { search = "" },
 }) => {
   const [inputs, setInputs] = useState<string[]>(search.split(","));
+
+  const { data, isLoading } = useQuery(
+    ["transactions", "0xcD4bde67fe7C6Eb601d03a35Ea8a55eB2b136965"],
+    () => getTransactions("0xcD4bde67fe7C6Eb601d03a35Ea8a55eB2b136965")
+  );
+
+  const mappedData = data?.items.map(({ log_events }) =>
+    log_events.filter(({ decoded }) => TRANSACTION_TYPE.includes(decoded?.name))
+  );
+
+  console.log(mappedData);
+
   return (
     <Layout
       headerChildren={
