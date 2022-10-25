@@ -38,11 +38,13 @@ export interface Transaction {
   gas_quote: number;
   gas_quote_rate: number;
 
-  log_events: {
-    block_signed_at: ISODateString;
-    sender_address: string;
-    decoded: HarmonyEvent;
-  }[];
+  log_events: LogEvent[];
+}
+
+export interface LogEvent {
+  block_signed_at: ISODateString;
+  sender_address: string;
+  decoded: HarmonyEvent;
 }
 
 const covalentKey = "ckey_1d37f91734d44443acdbb6a30bf";

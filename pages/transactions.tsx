@@ -24,7 +24,7 @@ import { Save } from "svg/save";
 import Link from "next/link";
 import MultiSearch from "$components/MultiSearch/MultiSearch";
 import { useState } from "react";
-import { getTransactions } from "$utils/api";
+import { getTransactions, LogEvent } from "$utils/api";
 import { useQuery } from "react-query";
 import { TRANSACTION_TYPE } from "$utils/constant";
 
@@ -57,7 +57,12 @@ const Transactions: NextPage<TransactionsProps> = ({
     )
   );
 
-  console.log(mappedData);
+  // reduce to flatten array
+  const flattenData = mappedData?.reduce(
+    (acc, val) => acc.concat(val),
+    [] as LogEvent[]
+  );
+  console.log(flattenData);
 
   return (
     <Layout
