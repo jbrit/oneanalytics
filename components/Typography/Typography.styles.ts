@@ -44,6 +44,7 @@ export const TypographyThree = styled.p<ITypographyProps>`
   color: ${({ color }) => color ?? "rgba(255, 255, 255, 0.67)"};
   margin-bottom: ${({ mb }) => mb};
   text-align: ${({ textAlign }) => textAlign};
+  word-break: break-all;
   @media screen and (${BREAKPOINTS.md}) {
     font-size: 1.8rem;
     line-height: 3.1rem;
