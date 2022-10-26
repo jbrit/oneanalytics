@@ -53,7 +53,7 @@ export interface LogEvent {
 const covalentKey = "ckey_1d37f91734d44443acdbb6a30bf";
 
 export const covalentApiInstance = axios.create({
-  baseURL: `https://api.covalenthq.com/v1/1/`,
+  baseURL: `https://api.covalenthq.com/v1/1666600000/`,
 });
 
 export const getTransactions = async (address: string) =>
