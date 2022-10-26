@@ -47,6 +47,7 @@ export interface LogEvent {
   sender_contract_ticker_symbol: string;
   sender_contract_decimals: number;
   decoded: HarmonyEvent;
+  tx_hash: string;
 }
 
 const covalentKey = "ckey_1d37f91734d44443acdbb6a30bf";
