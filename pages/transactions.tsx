@@ -103,10 +103,9 @@ const Transactions: NextPage<TransactionsProps> = ({
     );
 
   // reduce to flatten array
-  const flattenData = mappedData?.reduce(
-    (acc, val) => acc.concat(val),
-    [] as LogEvent[]
-  );
+  const flattenData = mappedData
+    ?.reduce((acc, val) => acc.concat(val), [] as LogEvent[])
+    .sort((a, b) => b.block_signed_at.localeCompare(a.block_signed_at));
   console.log(flattenData);
 
   return (
@@ -260,14 +259,15 @@ const Transactions: NextPage<TransactionsProps> = ({
                                 const csv = evaluateCollapseHeader(
                                   inputs,
                                   logEvent.decoded
-                                )
-                                  ?.csv?.reduce(
-                                    (acc, value) => acc.concat(value),
-                                    []
-                                  )
-                                  .join("\n");
+                                )?.csv?.reduce(
+                                  (acc, value) => acc.concat(value),
+                                  []
+                                );
                                 const CSVFile =
-                                  csv && new Blob([csv], { type: "text/csv" });
+                                  csv &&
+                                  new Blob([csv.join("\n")], {
+                                    type: "text/csv",
+                                  });
                                 if (CSVFile) {
                                   // Create to temporary hidden link to initiate the download process
                                   const tempLink = document.createElement("a");
