@@ -130,4 +130,20 @@ export const GlobalStyles = createGlobalStyle`
   .ant-empty-img-simple-g {
     stroke: rgba(255,255,255,0.6);
   }
+  .ant-pagination-prev .ant-pagination-item-link, .ant-pagination-next .ant-pagination-item-link, .ant-pagination-item, .ant-select:not(.ant-select-customize-input) .ant-select-selector, .ant-pagination-prev, .ant-pagination-next, .ant-pagination-jump-prev, .ant-pagination-jump-next {
+    background-color: #11161d;
+    border: 1px solid #343942;
+    & .anticon svg {
+      fill: rgba(255, 255, 255, 0.67);
+    }
+  }
+  .ant-select-arrow svg {
+      fill: rgba(255, 255, 255, 0.67);
+  }
+  .ant-pagination-item a, .ant-select-selection-item {
+    color: rgba(255, 255, 255, 0.67);
+  }
+  .ant-pagination-item-active {
+    border-color: #707276;
+  }
 `;
