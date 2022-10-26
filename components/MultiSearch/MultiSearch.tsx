@@ -19,22 +19,24 @@ const MultiSearch: FC<IMultiSearchProps> = ({
   return (
     <StyledMultiSearch>
       <StyledMultiSearchTagContainer>
-        {inputs.map((item) => (
-          <StyledMultiSearchTag key={item}>
-            <TypographyOne color="rgba(116, 142, 178, 0.87)">
-              {truncateAddress(item)}
-            </TypographyOne>
-            <button
-              onClick={() =>
-                setInputs((prevInputs) =>
-                  prevInputs.filter((_item) => _item !== item)
-                )
-              }
-            >
-              <Close />
-            </button>
-          </StyledMultiSearchTag>
-        ))}
+        {inputs
+          .filter((input) => input.trim().length > 0)
+          .map((item) => (
+            <StyledMultiSearchTag key={item}>
+              <TypographyOne color="rgba(116, 142, 178, 0.87)">
+                {truncateAddress(item)}
+              </TypographyOne>
+              <button
+                onClick={() =>
+                  setInputs((prevInputs) =>
+                    prevInputs.filter((_item) => _item !== item)
+                  )
+                }
+              >
+                <Close />
+              </button>
+            </StyledMultiSearchTag>
+          ))}
         <input
           placeholder="Search for hash, transaction, or addresses"
           value={input}
