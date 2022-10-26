@@ -44,6 +44,8 @@ export interface Transaction {
 export interface LogEvent {
   block_signed_at: ISODateString;
   sender_address: string;
+  sender_contract_ticker_symbol: string;
+  sender_contract_decimals: number;
   decoded: HarmonyEvent;
 }
 
