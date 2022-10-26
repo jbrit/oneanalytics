@@ -39,6 +39,7 @@ import {
 import { Pagination, Skeleton } from "antd";
 import Head from "next/head";
 import { truncateAddress } from "$utils/functions";
+import { useRouter } from "next/router";
 interface TransactionsProps {
   query: {
     search?: string;
@@ -48,6 +49,7 @@ interface TransactionsProps {
 const Transactions: NextPage<TransactionsProps> = ({
   query: { search = "" },
 }) => {
+  const router = useRouter();
   const [inputs, setInputs] = useState<string[]>(search.split(","));
   const [fromDate, setFromDate] = useState<string | null>(null);
   const [toDate, setToDate] = useState<string | null>(null);
@@ -58,10 +60,12 @@ const Transactions: NextPage<TransactionsProps> = ({
   const [pageSize, setPageSize] = useState<number>(5);
 
   const transactionQueries = useQueries(
-    inputs.map((input) => ({
-      queryKey: ["transactions", input],
-      queryFn: () => getTransactions(input),
-    }))
+    inputs
+      .filter((input) => input.trim().length > 0)
+      .map((input) => ({
+        queryKey: ["transactions", input],
+        queryFn: () => getTransactions(input),
+      }))
   );
 
   const isLoading = transactionQueries.some(({ isLoading }) => isLoading);
