@@ -1,13 +1,12 @@
 import styled from "styled-components";
-import { IMultiSearchProps } from "./MultiSearch.types";
 
-export const StyledMultiSearch = styled.div<Pick<IMultiSearchProps, "height">>`
+export const StyledMultiSearch = styled.div`
   background: #11161d;
   border: 2px solid #343942;
   border-radius: 15px;
   padding: 15px 21px;
   width: 100%;
-  min-height: ${({ height }) => height ?? "71px"};
+  min-height: 40px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -36,6 +35,7 @@ export const StyledMultiSearchTagContainer = styled.div`
   align-items: center;
   gap: 12px;
   background: transparent;
+  flex-wrap: nowrap;
 `;
 
 export const StyledMultiSearchTag = styled.div`

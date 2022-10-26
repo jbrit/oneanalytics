@@ -14,11 +14,10 @@ const MultiSearch: FC<IMultiSearchProps> = ({
   inputs,
   onSearch,
   setInputs,
-  height,
 }) => {
   const [input, setInput] = useState<string>("");
   return (
-    <StyledMultiSearch height={height}>
+    <StyledMultiSearch>
       <StyledMultiSearchTagContainer>
         {inputs.map((item) => (
           <StyledMultiSearchTag key={item}>
