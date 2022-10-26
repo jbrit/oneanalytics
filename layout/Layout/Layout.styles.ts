@@ -1,6 +1,7 @@
 import { BREAKPOINTS } from "$constants/breakpoints";
 import { Layout as AntdLayout } from "antd";
 import styled from "styled-components";
+import { ILayoutProps } from "./Layout.types";
 
 export const Layout = styled(AntdLayout)`
   background: transparent;
@@ -10,12 +11,14 @@ export const Layout = styled(AntdLayout)`
   margin: 0 auto;
 `;
 
-export const Content = styled(AntdLayout.Content)`
+export const Content = styled(AntdLayout.Content)<
+  Pick<ILayoutProps, "contentJustify">
+>`
   background: transparent;
   padding: 20px 20px 80px 20px;
   display: flex;
   align-items: stretch;
-  justify-content: center;
+  justify-content: ${({ contentJustify }) => contentJustify ?? "center"};
   flex-direction: column;
   @media screen and (${BREAKPOINTS.md}) {
     padding: 60px 60px 100px 60px;

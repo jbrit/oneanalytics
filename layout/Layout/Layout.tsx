@@ -4,11 +4,16 @@ import { FC } from "react";
 import { Content, Layout as StyledLayout } from "./Layout.styles";
 import { ILayoutProps } from "./Layout.types";
 
-const Layout: FC<ILayoutProps> = ({ search, children, headerChildren }) => {
+const Layout: FC<ILayoutProps> = ({
+  search,
+  children,
+  headerChildren,
+  contentJustify,
+}) => {
   return (
     <StyledLayout>
       <Header>{headerChildren}</Header>
-      <Content>{children}</Content>
+      <Content contentJustify={contentJustify}>{children}</Content>
       <Footer />
     </StyledLayout>
   );
