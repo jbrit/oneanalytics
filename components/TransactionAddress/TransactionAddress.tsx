@@ -14,14 +14,28 @@ const TransactionAddress: FC<ITransactionAddressProps> = ({
       <TypographyThree color="rgba(255, 255, 255, 0.47)">
         {fromTitle}
       </TypographyThree>
-      <TypographyThree color="#58A5FE">{from}</TypographyThree>
+      <TypographyThree
+        as="a"
+        target="_blank"
+        href={`https://explorer.harmony.one/address/${from}`}
+        color="#58A5FE"
+      >
+        {from}
+      </TypographyThree>
     </FlexibleDiv>
     <div className="collapse-divider"></div>
     <FlexibleDiv margin="0 0 24px 0" justifyContent="space-between">
       <TypographyThree color="rgba(255, 255, 255, 0.47)">
         {toTitle}
       </TypographyThree>
-      <TypographyThree color="#58A5FE">{to}</TypographyThree>
+      <TypographyThree
+        as="a"
+        target="_blank"
+        href={`https://explorer.harmony.one/address/${to}`}
+        color="#58A5FE"
+      >
+        {to}
+      </TypographyThree>
     </FlexibleDiv>
     <div className="collapse-divider"></div>
   </>
