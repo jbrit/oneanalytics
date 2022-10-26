@@ -38,6 +38,7 @@ import {
 } from "$components/Transactions/Transactions.styles";
 import { Pagination, Skeleton } from "antd";
 import Head from "next/head";
+import { truncateAddress } from "$utils/functions";
 interface TransactionsProps {
   query: {
     search?: string;
@@ -106,7 +107,7 @@ const Transactions: NextPage<TransactionsProps> = ({
     (acc, val) => acc.concat(val),
     [] as LogEvent[]
   );
-  // console.log(flattenData);
+  console.log(flattenData);
 
   return (
     <div>
@@ -229,7 +230,7 @@ const Transactions: NextPage<TransactionsProps> = ({
                               alignItems="flex-start"
                             >
                               <TypographyThree color="rgba(88, 165, 254, 0.87)">
-                                #7410760223
+                                #{truncateAddress(logEvent.tx_hash)}
                               </TypographyThree>
                               <TypographyTwo color="rgba(255, 255, 255, 0.67)">
                                 {
@@ -247,8 +248,10 @@ const Transactions: NextPage<TransactionsProps> = ({
                             alignItems="center"
                             margin="0 50px 0 0"
                           >
-                            <Link href="/">
-                              <a>
+                            <Link
+                              href={`https://explorer.harmony.one/${logEvent.tx_hash}`}
+                            >
+                              <a target="_blank">
                                 <LinkIcon className="transaction-icon" />
                               </a>
                             </Link>
