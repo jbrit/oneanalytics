@@ -196,11 +196,11 @@ interface HRC20Approval {
   ];
 }
 
-interface UnknownEvent {
+export interface UnknownEvent {
   name: string;
   signature: string;
   //   we won't need this, this type is a hack
-  params: { value: string }[];
+  params: { value: string; name: string; amount?: string }[];
 }
 
 export type HarmonyEvent =
