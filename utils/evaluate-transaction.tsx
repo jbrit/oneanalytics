@@ -68,9 +68,9 @@ export const evaluateCollapseHeader = (
       ];
       if (addresses.includes(decoded?.params[0].value)) {
         return {
-          svg: <TransferIn className="transaction-icon" />,
-          name: `Transfer Into ${truncateAddress(
-            decoded?.params[1].value.toLocaleLowerCase()
+          svg: <TransferOut className="transaction-icon" />,
+          name: `Transfer Out from ${truncateAddress(
+            decoded?.params[0].value.toLocaleLowerCase()
           )}`,
           details: (
             <TransactionAddress
@@ -86,8 +86,8 @@ export const evaluateCollapseHeader = (
               `Transfer Into ${truncateAddress(
                 decoded?.params[1].value.toLocaleLowerCase()
               )}`,
-              decoded?.params[1].value,
               decoded?.params[0].value,
+              decoded?.params[1].value,
               mapToken(decoded?.params),
             ],
           ],
@@ -95,10 +95,8 @@ export const evaluateCollapseHeader = (
       }
       if (addresses.includes(decoded?.params[1].value.toLocaleLowerCase())) {
         return {
-          svg: <TransferOut className="transaction-icon" />,
-          name: `Transfer Out from ${truncateAddress(
-            decoded?.params[0].value
-          )}`,
+          svg: <TransferIn className="transaction-icon" />,
+          name: `Transfer Into ${truncateAddress(decoded?.params[1].value)}`,
           details: (
             <TransactionAddress
               fromTitle="Sender’s Address"
@@ -110,9 +108,9 @@ export const evaluateCollapseHeader = (
           csv: [
             csvHeader,
             [
-              `Transfer Out from ${truncateAddress(decoded?.params[0].value)}`,
-              decoded?.params[1].value,
+              `Transfer Into ${truncateAddress(decoded?.params[0].value)}`,
               decoded?.params[0].value,
+              decoded?.params[1].value,
               mapToken(decoded?.params),
             ],
           ],
@@ -129,7 +127,7 @@ export const evaluateCollapseHeader = (
         "Receiver's Address",
         "Token",
       ];
-      if (addresses.includes(decoded?.params[1].value.toLocaleLowerCase())) {
+      if (addresses.includes(decoded?.params[2].value.toLocaleLowerCase())) {
         return {
           svg: <TransferIn className="transaction-icon" />,
           name: `Transfer Into ${truncateAddress(decoded?.params[2].value)}`,
@@ -145,14 +143,14 @@ export const evaluateCollapseHeader = (
             csvHeader,
             [
               `Transfer Into ${truncateAddress(decoded?.params[2].value)}`,
-              decoded?.params[2].value,
               decoded?.params[1].value,
+              decoded?.params[2].value,
               mapToken(decoded?.params),
             ],
           ],
         };
       }
-      if (addresses.includes(decoded?.params[2].value.toLocaleLowerCase())) {
+      if (addresses.includes(decoded?.params[1].value.toLocaleLowerCase())) {
         return {
           svg: <TransferOut className="transaction-icon" />,
           name: `Transfer Out from ${truncateAddress(
@@ -170,8 +168,8 @@ export const evaluateCollapseHeader = (
             csvHeader,
             [
               `Transfer Out from ${truncateAddress(decoded?.params[1].value)}`,
-              decoded?.params[2].value,
               decoded?.params[1].value,
+              decoded?.params[2].value,
               mapToken(decoded?.params),
             ],
           ],
