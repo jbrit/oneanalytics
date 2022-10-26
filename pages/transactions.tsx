@@ -257,7 +257,7 @@ const Transactions: NextPage<TransactionsProps> = ({
                             margin="0 50px 0 0"
                           >
                             <Link
-                              href={`https://explorer.harmony.one/${logEvent.tx_hash}`}
+                              href={`https://explorer.harmony.one/tx/${logEvent.tx_hash}`}
                             >
                               <a target="_blank">
                                 <LinkIcon className="transaction-icon" />
@@ -280,7 +280,7 @@ const Transactions: NextPage<TransactionsProps> = ({
                                 if (CSVFile) {
                                   // Create to temporary hidden link to initiate the download process
                                   const tempLink = document.createElement("a");
-                                  tempLink.download = `logs.csv`;
+                                  tempLink.download = `${logEvent.tx_hash}-log.csv`;
                                   const url =
                                     window.URL.createObjectURL(CSVFile);
                                   tempLink.href = url;
