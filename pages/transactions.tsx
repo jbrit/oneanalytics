@@ -1,5 +1,6 @@
 import { FlexibleDiv } from "$components/FlexibleDiv/FlexibleDiv.styles";
 import { DatePicker } from "$components/DatePicker/DatePicker.styles";
+import moment from "moment";
 import { Select } from "$components/Select/Select";
 import {
   TypographyFour,
@@ -51,8 +52,10 @@ const Transactions: NextPage<TransactionsProps> = ({
 }) => {
   const router = useRouter();
   const [inputs, setInputs] = useState<string[]>(search.split(","));
-  const [fromDate, setFromDate] = useState<string | null>(null);
-  const [toDate, setToDate] = useState<string | null>(null);
+  const [fromDate, setFromDate] = useState<string | null>(
+    moment().subtract("months", 1).toISOString()
+  );
+  const [toDate, setToDate] = useState<string | null>(moment().toISOString());
   const [tokenSelect, setTokenSelect] = useState<string>("Select Token");
   const [transactionSelect, setTransactionSelect] =
     useState<string>("Select Transaction");
@@ -154,6 +157,7 @@ const Transactions: NextPage<TransactionsProps> = ({
               <DatePicker
                 onChange={(_, dateString) => setFromDate(dateString)}
                 suffixIcon={<DateSVG />}
+                defaultValue={moment().subtract(1, "month")}
               />
             </FlexibleDiv>
             <FlexibleDiv gap="12px" justifyContent="flex-start">
@@ -161,6 +165,7 @@ const Transactions: NextPage<TransactionsProps> = ({
               <DatePicker
                 onChange={(_, dateString) => setToDate(dateString)}
                 suffixIcon={<DateSVG />}
+                defaultValue={moment()}
               />
             </FlexibleDiv>
             <Select
