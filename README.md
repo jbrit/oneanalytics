@@ -1,4 +1,6 @@
-This is a starter kit for EVM compatible dapps.
+# One analytics
+
+It is a token visualization/analytica app, try it out
 
 ## Getting Started
 
